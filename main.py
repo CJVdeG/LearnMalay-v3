@@ -9,6 +9,8 @@ import random
 import pandas as pd
 import os
 
+from threading import Thread
+
 # ---------------------------- VARIABLE DECLARATION ------------------------------- #
 BACKGROUND_COLOR = "B1DDC6"
 to_learn = {}
@@ -78,16 +80,26 @@ def load_selected_file():
 # ---------------------------- MARK WORD AS DIFFICULT ------------------------------- #
 def mark_difficult_word():
     global current_card
-    global difficult_words
 
     difficult_word = {
         "Malay": current_card["Malay"],
         "English": current_card["English"]
     }
 
-    difficult_words.append(difficult_word)
-    data = pd.DataFrame(difficult_words)
-    data.to_csv("data/1-DifficultWords.csv", index=False)
+    # Check if the '1-DifficultWords.csv' file exists
+    if os.path.exists("data/1-DifficultWords.csv"):
+        # Read existing difficult words from the file
+        existing_data = pd.read_csv("data/1-DifficultWords.csv")
+        # Create a DataFrame for the new difficult word
+        new_data = pd.DataFrame([difficult_word])
+        # Concatenate the existing data with the new difficult word
+        updated_data = pd.concat([existing_data, new_data], ignore_index=True)
+    else:
+        # If the file does not exist, create a new DataFrame with the new difficult word
+        updated_data = pd.DataFrame([difficult_word])
+
+    # Save the updated list of difficult words to the CSV file
+    updated_data.to_csv("data/1-DifficultWords.csv", index=False)
 
     # Remove the word from the to_learn list
     to_learn.remove(current_card)
@@ -97,6 +109,7 @@ def mark_difficult_word():
     next_card()
     word_count_label.config(text=f"Words to Learn: {get_remaining_words_count()}")
     difficult_word_count_label.config(text=f"Difficult words: {get_difficult_words_count()}")
+
 
 
 # ---------------------------- CLEAR DIFFICULT WORDS ------------------------------- #
@@ -115,24 +128,17 @@ def clear_difficult_words():
 # ---------------------------- GOOGLE TEXT TO SPEECH ------------------------------- #
 # Updated text_to_speech function to consider the "Auto-pronounce" and manual pronunciation
 def text_to_speech(text, manual=False):
-    global pending_pronunciation
-    if auto_pronounce and not manual:
-        tts = gTTS(text, lang='ms')  # Pronounce Malay words
-        temp_file = tempfile.NamedTemporaryFile(delete=True)
-        tts.save(temp_file.name + ".mp3")
-        playsound(temp_file.name + ".mp3")
-        pending_pronunciation = None  # Reset the pending pronunciation after it's played
-    elif not auto_pronounce and not manual:
-        # If "Auto Pronounce" is off, and it's not a manual pronunciation, do nothing
-        pending_pronunciation = None
-    else:
-        # Handle manual pronunciation
+    def play_sound():
         tts = gTTS(text, lang='ms')
-        temp_file = tempfile.NamedTemporaryFile(delete=True)
-        tts.save(temp_file.name + ".mp3")
-        playsound(temp_file.name + ".mp3")
-        pending_pronunciation = None
-
+        temp_file_path = "temp_audio.mp3"
+        tts.save(temp_file_path)
+        print("Saved audio to:", temp_file_path)  # Debugging line
+        if os.path.exists(temp_file_path):
+            print("Audio file exists")
+        else:
+            print("Audio file does not exist")
+        playsound(temp_file_path)
+        os.remove(temp_file_path)  # Remove the temporary file
 
 # ---------------------------- SHOW REMAINING WORDS ------------------------------- #
 # Function to show the number of remaining words
