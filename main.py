@@ -52,8 +52,13 @@ def initialize_flashcards(file_path):
             raise FileNotFoundError  # Raise FileNotFoundError to load the preconfigured list
 
         df = pd.read_csv(file_path)
-    except FileNotFoundError:
+        if df.empty:
+            # Handle empty DataFrame
+            raise ValueError("The file is empty")
+
+    except (FileNotFoundError, ValueError) as e:
         # If the file doesn't exist or was empty, load the preconfigured list
+        print(e)
         df = pd.read_csv("data/1-GettingStarted.csv")
 
     to_learn = df.to_dict(orient="records")
@@ -135,13 +140,15 @@ def text_to_speech(text, manual=False):
         tts = gTTS(text, lang='ms')
         temp_file_path = "temp_audio.mp3"
         tts.save(temp_file_path)
-        print("Saved audio to:", temp_file_path)  # Debugging line
 
-        if os.path.exists(temp_file_path):
-            print("Audio file exists")
-        else:
-            print("Audio file does not exist")
-            return
+        # Debugging
+        # print("Saved audio to:", temp_file_path)
+        #
+        # if os.path.exists(temp_file_path):
+        #     print("Audio file exists")
+        # else:
+        #     print("Audio file does not exist")
+        #     return
 
         # Load and play sound using pygame
         pygame.mixer.music.load(temp_file_path)
