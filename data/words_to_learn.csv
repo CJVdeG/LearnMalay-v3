@@ -1,103 +1,173 @@
-Malay,English
-Saya mahu,I want
-Saya boleh,I can
-Saya suka,I like
-pergi,to go
-berenang,to swim
-beli belah,to shop
-memasak,to cook
-keluar,to go out
-dengan kamu,with you
-dengan dia,with him/her
-dengan kami,with us
-dengan kawan saya,with my friend
-dengan keluarga saya,with my family
-esok,tomorrow
-pagi ini,this morning
-tengahari,this afternoon
-petang ini,this evening
-petang esok,tomorrow evening
-Isnin,Monday
-Selasa,Tuesday
-Khamis,Thursday
-Sabtu,Saturday
-Ahad,Sunday
-hujung minggu ini,this weekend
-kamu mahu,you want
-kamu boleh,you can
-kamu suka,you like
-kamu mesti,you must
-makan,to eat
-di panggung,at the cinema
-di hotel,at the hotel
-ke pejabat,to the office
-ke konsert,to the concert
-ke pasar,to the market
-di Paris,at Paris
-di restoran,at the restaurant
-naik tren,by train
-naik bas,by bus
-naik kereta,by car
-ada kah,"is, are, does, do"
-bila kah,when
-siapa kah,who (is)
-untuk siapa kah,for whom / to whom
-pukul berapa kah,at what time
-berapa kali,how many times
-macam mana,how 
-"saya, aku",I
-anda,you
-engkau,you
-kau,you
-dia,he/she
-kamu semua ,you all
-mereka,they
-suka,like
-lebih suka,prefer
-nak,want (informal)
-sedang,in the middle of
-mesti,must
-benci,hate
-tahu,know
-tahu bagaimana,know how
-harap,hope
-perlu,need
-akan,future
-tidak,not / no
-bukan,not / no
-saya bukan seorang,I am not a 
-kamu seorang,You are a
-saya ada,I have
-kamu tidak ada,You don’t have
-saya tidak suka,I don’t like
-kamu tidak suka,You don’t like
-saya tahu,I know
-saya tidak tahu,I don’t know
-saya tidak mahu pergi ke,I don’t want to go to
-kamu mahu pergi ke,You want to go to
-kamu tidak mahu pergi ke,You don’t want to go to
-saya mahu / hendak,I want
-saya tidak mahu ,I don’t want
-untuk,for
-tanpa,without
-dekat,near
-jauh dari ,far from
-terima kasih kepada,thanks to
-kepada, to
-bertentangan,opposite
-tidak,not
-selepas,after
-kamu,you
-dia,him/her
-kita,us
-ibu bapa saya,my parents
-ibu bapa dia,his/her parents
-kakak saya,my sister
-isteri saya,my wife
-ibu saudara saya,my auntie
-bapa saudara saya,my uncle
-kawan saya,my friend
-kawan-kawan kamu,your friends
-kawan-kawan dia,his/her friends
-teman lelaki saya,my boyfriend
-temen wanita saya,my girlfriend
+Malay,English,Unnamed: 2,Unnamed: 3,Unnamed: 4,Unnamed: 5,Unnamed: 6
+tambah,add,,,,,
+nasihat,advise,,,,,
+jawab,answer,,,,,
+susun / mengatur,arrange ,,,,,
+tangkap,arrest / catch,,,,,
+tiba / sampai / datang,arrive,,,,,
+tanya,ask,,,,,
+elak,avoid,,,,,
+tawar-menawar,bargain,,,,,
+cantikkan,beautify,,,,,
+menjadi,become,,,,,
+mula,begin,,,,,
+percaya,believe,,,,, 
+pinjam,borrow,,,,,
+tempah,book,,,,,
+pecah,break,,,,,
+bawa sesuatu (benda),bring something,,,,,
+bawa seseorang,bring someone ,,,,,
+pulangkan sesuatu,bring back something,,,,,
+pulangkan seseorang,bring back someone,,,,,
+bina,build,,,,,
+bakar,burn,,,,,
+beli,buy,,,,,
+panggil / talipon,"call, make a call",,,,,
+batal,cancel,,,,,
+bawa / angkat,carry,,,,,
+tukar,change,,,,,
+bual,chat,,,,,
+pilih,choose,,,,,
+bersih,clean,,,,,
+panjat  / daki,climb,,,,,
+tutup,close,,,,,
+datang,come,,,,,
+datang ke,come to ,,,,,
+datang dari,come from ,,,,,
+pulang,come back ,,,,,
+teruskan,continue,,,,,
+kawal,control,,,,,
+masak,cook,,,,,
+betul,correct,,,,,
+biaya,cost,,,,,
+kira / bilang,count ,,,,,
+cipta,create,,,,,
+potong,cut,,,,,
+nangis,cry,,,,,
+menari,dance,,,,,
+memutuskan,decide ,,,,,
+gambarkan,describe ,,,,,
+majukan,develop,,,,,
+meninggal duni / mati,die,,,,,
+benci,dislike,,,,,
+temui,discover,,,,,
+buat,do,,,,,
+buat u-turn,do a u-turn,,,,,
+berkebun,do gardening,,,,,
+beli barang runcit,do groceries,,,,,
+buat sendiri,do diy,,,,,
+buat kerja rumah sekolah,do homework,,,,,
+buat kerja rumah ,do housework,,,,,
+ambil foto/gambar,do photography,,,,,
+pergi beli belah,do some shopping,,,,,
+buat terbaik,do the best,,,,,
+cuci pinggan,do the dishes,,,,,
+cuci baju,do the laundry,,,,,
+buat senaman / bersukan,do some sport,,,,,
+pergi jogging,go jogging,,,,,
+pindah data,download,,,,,
+lukis,draw,,,,,
+minum,drink,,,,,
+pandu,drive,,,,,
+pandu ke,drive to / drive by,,,,,
+singgah,drop by,,,,,
+makan,eat,,,,,
+masuk,enter,,,,,
+padam,erase,,,,,
+terangkan,explain,,,,,
+teroka / jajah,explore,,,,,
+gagal,fail,,,,,
+isikan,"fill out, fill up",,,,,
+tamat / selasai / habis,finish,,,,,
+pancing ikan,fish,,,,,
+terbang,fly,,,,,
+ikut,follow,,,,,
+larang,forbid,,,,,
+lupa,forget,,,,,
+maafkan,forgive,,,,,
+dapat,get,,,,,
+bagi / beri,give,,,,,
+pulangkan,give back,,,,,
+bagi hadiah,give a gift,,,,,
+pergi,go (or leave),,,,,
+pulang ke,go back to,,,,,
+turun,go down,,,,,
+pergi jalan,go for a walk,,,,,
+pergi tidur,go to bed,,,,,
+naik atas,go up,,,,,
+pergi ke pasar,go to wet market,,,,,
+jemput,invite,,,,,
+lompat,jump,,,,,
+minum,have a drink,,,,,
+makan sarapan,have breakfast,,,,,
+makan malam,have dinner,,,,,
+makan tengahari,have lunch,,,,,
+cium,hantar,,,,,
+cium hello,kiss hello,,,,,
+ketawa,laugh,,,,,
+belajar,learn,,,,,
+pergi,leave,,,,,
+suka,like,,,,,
+dengar,listen,,,,,
+tinggal,live,,,,,
+cari,look for,,,,,
+hilang,lose,,,,,
+hilang berat badan,lose weight,,,,,
+cinta / sayang,love,,,,,
+buat panggilan,make a call,,,,,
+buat komplain,make a complaint,,,,,
+buat hadiah,make a gift,,,,,
+buat rancangan,make plans,,,,,
+urus / kendali,manage,,,,,
+jumpa,meet,,,,,
+hafal / ingat,memorize,,,,,
+campur,mix,,,,,
+rindu,miss,,,,,
+pindah masuk,move in,,,,,
+pindah keluar,move out,,,,,
+pesan,order,,,,,
+bungkus,pack ,,,,,
+bayar,pay,,,,,
+beri perhatian,pay attention,,,,,
+parti,party,,,,,
+ambil seseorang,pick up someone,,,,,
+jemput seseorang,invite someone,,,,,
+main,play,,,,,
+sembayang,pray,,,,,
+letak,put,,,,,
+cadangkan,recommend,,,,,
+buat lagi,redo,,,,,
+sewa,rent,,,,,
+mula lagi,restart,,,,,
+simpan duit,save money,,,,,
+kata / cakap,say,,,,,
+jual,sell,,,,,
+hantar,send / pass,,,,,
+nanyi,sing,,,,,
+tidur,sleep,,,,,
+bangun lambat,wake up late,,,,,
+senyum,smile,,,,,
+habiskan masa,spend time,,,,,
+berdiri,stand,,,,,
+mula,start,,,,,
+tinggal,stay,,,,,
+belajar di …,study at …,,,,,
+layar internet,surf internet,,,,,
+berenang,swim,,,,,
+ambil,take,,,,,
+ambil semula,take again,,,,,
+tidur sekejap,take a nap,,,,,
+pergi bercuti,make a trip,,,,,
+rasa,taste,,,,,
+ajar,teach,,,,,
+beritahu,tell,,,,,
+berterima kasih,thank,,,,,
+fikir,think,,,,,
+kembara / pergi jalan jauh / melancung,travel,,,,,
+cuba,try,,,,,
+guna,use,,,,,
+lawat sebuah tempat,visit a place,,,,,
+lawat seseorang,visit someone,,,,,
+tengok tv / tonton tv,watch tv,,,,,
+kerja,work,,,,,
+tulis,write,,,,,

@@ -1,13 +1,13 @@
 # ---------------------------- IMPORTS ------------------------------- #
 from gtts import gTTS
-from playsound import playsound
 import tempfile
+import pygame
+import os
 
 from tkinter import ttk
 from tkinter import *
 import random
 import pandas as pd
-import os
 
 from threading import Thread
 
@@ -111,7 +111,6 @@ def mark_difficult_word():
     difficult_word_count_label.config(text=f"Difficult words: {get_difficult_words_count()}")
 
 
-
 # ---------------------------- CLEAR DIFFICULT WORDS ------------------------------- #
 def clear_difficult_words():
     try:
@@ -126,19 +125,38 @@ def clear_difficult_words():
 
 
 # ---------------------------- GOOGLE TEXT TO SPEECH ------------------------------- #
-# Updated text_to_speech function to consider the "Auto-pronounce" and manual pronunciation
+# Initialize pygame mixer
+pygame.mixer.init()
+
+
+# Updated text_to_speech function to use pygame
 def text_to_speech(text, manual=False):
     def play_sound():
         tts = gTTS(text, lang='ms')
         temp_file_path = "temp_audio.mp3"
         tts.save(temp_file_path)
         print("Saved audio to:", temp_file_path)  # Debugging line
+
         if os.path.exists(temp_file_path):
             print("Audio file exists")
         else:
             print("Audio file does not exist")
-        playsound(temp_file_path)
-        os.remove(temp_file_path)  # Remove the temporary file
+            return
+
+        # Load and play sound using pygame
+        pygame.mixer.music.load(temp_file_path)
+        pygame.mixer.music.play()
+
+        # Wait until the sound is finished playing
+        while pygame.mixer.music.get_busy():
+            pygame.time.Clock().tick(10)
+
+        os.remove(temp_file_path)  # Remove the temporary file after playing
+
+    # Run the sound playing function in a separate thread
+    thread = Thread(target=play_sound)
+    thread.start()
+
 
 # ---------------------------- SHOW REMAINING WORDS ------------------------------- #
 # Function to show the number of remaining words
@@ -249,11 +267,6 @@ def flip_card():
         canvas.itemconfig(card_title, text="English", fill="white")
         canvas.itemconfig(card_word, text=current_card["English"], fill="white")
 
-        # Remove this function call because it's already being called (double) in the next_card function
-        # Pronounce the Malay word if "Auto Pronounce" is enabled
-        # if auto_pronounce:
-        #     text_to_speech(current_card["Malay"])
-
     else:
         canvas.itemconfig(card_title, text="Malay", fill="white")
         canvas.itemconfig(card_word, text=current_card["Malay"], fill="white")
@@ -324,25 +337,29 @@ button_right = Button(image=img_right, width=100, height=100, command=is_known)
 button_right.place(x=470, y=360)
 
 # Button to mark the current word as difficult
-button_difficult = Button(root, text="Mark as Difficult", font=("Arial", 13, "normal"), width=18, command=mark_difficult_word)
+button_difficult = Button(root, text="Mark as Difficult", font=("Arial", 13, "normal"), width=18,
+                          command=mark_difficult_word)
 button_difficult.place(x=340, y=480)
 
 # ---------------------------- TOGGLE DIRECTION ------------------------------- #
 
 # Button to toggle direction
-button_direction = Button(root, text="Switch to English to Malay", font=("Arial", 15, "bold"), width=25, command=toggle_direction)
+button_direction = Button(root, text="Switch to English to Malay", font=("Arial", 15, "bold"), width=25,
+                          command=toggle_direction)
 button_direction.place(x=900, y=50)
 
 # ---------------------------- TOGGLE TRANSLATION ------------------------------- #
 
 # Button to toggle translation
-button_toggle = Button(root, text="Toggle Translation", font=("Arial", 15, "bold"), width=25, command=toggle_translation)
+button_toggle = Button(root, text="Toggle Translation", font=("Arial", 15, "bold"), width=25,
+                       command=toggle_translation)
 button_toggle.place(x=900, y=100)
 
 # ---------------------------- GOOGLE TEXT TO SPEECH / PRONOUNCE ------------------------------- #
 
 # Button for Google text to speech
-pronounce_button = Button(root, text="Pronounce", font=("Arial", 14, "bold"), width=25, command=lambda: text_to_speech(current_card["Malay"], manual=True))
+pronounce_button = Button(root, text="Pronounce", font=("Arial", 14, "bold"), width=25,
+                          command=lambda: text_to_speech(current_card["Malay"], manual=True))
 pronounce_button.place(x=900, y=150)
 
 # ---------------------------- FILE SELECTION DROPDOWN AND LOADING ------------------------------- #
@@ -357,7 +374,8 @@ file_dropdown.configure(font=("Arial", 14, "normal"), width=25)  # Apply font an
 file_dropdown.place(x=900, y=220)
 
 # Button to load the selected file
-load_file_button = Button(root, text="Load selected File", font=("Arial", 14, "normal"), width=25, command=load_selected_file)
+load_file_button = Button(root, text="Load selected File", font=("Arial", 14, "normal"), width=25,
+                          command=load_selected_file)
 load_file_button.place(x=900, y=265)
 
 # ---------------------------- SET THE FLIP CARD TIMER ------------------------------- #
@@ -376,7 +394,6 @@ flip_timer = root.after(int(flip_timer_scale.get()), func=flip_card)
 difficult_word_count_label = Label(root, text=f"Difficult words: {get_difficult_words_count()}", font=("Arial", 14))
 difficult_word_count_label.place(x=900, y=395)
 
-
 # ---------------------------- SEE HOW MANY WORDS REMAINING ------------------------------- #
 
 # Show how many words remain in words to learn list
@@ -386,13 +403,15 @@ word_count_label.place(x=900, y=420)
 # ---------------------------- BUTTON TO CLEAR DIFFICULT WORDS LIST ------------------------------- #
 
 # Button to restart the program
-button_clear_difficult_words = Button(root, text="Clear difficult words", font=("Arial", 15, "normal"), width=25, command=clear_difficult_words)
+button_clear_difficult_words = Button(root, text="Clear difficult words", font=("Arial", 15, "normal"), width=25,
+                                      command=clear_difficult_words)
 button_clear_difficult_words.place(x=900, y=490)
 
 # ---------------------------- RESTART PROGRAM / CLEAR WORDS TO LEARN ------------------------------- #
 
 # Button to restart the program
-button_restart = Button(root, text="Clear words to learn", font=("Arial", 15, "normal"), width=25, command=restart_program)
+button_restart = Button(root, text="Clear words to learn", font=("Arial", 15, "normal"), width=25,
+                        command=restart_program)
 button_restart.place(x=900, y=450)
 
 # ---------------------------- AUTO PRONOUNCE CHECK BUTTON ------------------------------- #
@@ -405,7 +424,8 @@ auto_pronounce_var.set(auto_pronounce)  # Initialize the state
 style = ttk.Style()
 style.configure("TCheckbutton", font=("Arial", 13))
 # Replace the "Toggle button for Auto-pronounce" section
-auto_pronounce_switch = ttk.Checkbutton(root, text="Auto Pronounce", variable=auto_pronounce_var, command=toggle_auto_pronounce)
+auto_pronounce_switch = ttk.Checkbutton(root, text="Auto Pronounce", variable=auto_pronounce_var,
+                                        command=toggle_auto_pronounce)
 auto_pronounce_switch.place(x=900, y=189)
 
 # ---------------------------- LOAD THE PROGRAM ------------------------------- #
