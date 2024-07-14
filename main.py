@@ -1,6 +1,5 @@
 # ---------------------------- IMPORTS ------------------------------- #
 from gtts import gTTS
-import tempfile
 import pygame
 import os
 
